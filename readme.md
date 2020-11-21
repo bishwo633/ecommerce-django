@@ -19,12 +19,12 @@ python manage.py createsuperuser
 
 ## Run
 ```
-python manage.py runserver
+python manage.py runserver 8888
 ```
 
 ## Visit site
-- http://localhost
-- http://localhost/admin
+- http://localhost:8888
+- http://localhost/admin:8888
 
 ## Screenshots
 - Search product
