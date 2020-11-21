@@ -24,7 +24,7 @@ python manage.py runserver 8888
 
 ## Visit site
 - http://localhost:8888
-- http://localhost/admin:8888
+- http://localhost:8888/admin
 
 ## Screenshots
 - Search product
