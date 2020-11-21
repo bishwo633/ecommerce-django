@@ -26,4 +26,14 @@ python manage.py runserver
 - http://localhost
 - http://localhost/admin
 
+## Screenshots
+- Search product
+![Search product](https://github.com/bishwo633/ecommerce-django/tree/master/static/images/output1-search.png)
+
+- Cart/payment
+![Cart/payment](https://github.com/bishwo633/ecommerce-django/tree/master/static/images/output2-cart.png)
+
+- Admin
+![Admin](https://github.com/bishwo633/ecommerce-django/tree/master/static/images/output3-admin.png)
+
 # Thank you!
