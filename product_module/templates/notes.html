@@ -1,0 +1,87 @@
+<!-- {% extends "base.html" %}
+
+{% block header %}
+    <h2>Search Product</h2>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+ -->
+The django template language:
+
+Reference: https://docs.djangoproject.com/en/3.1/ref/templates/language/
+
+Variables:
+{{ variable_name }}
+{{ foo.bar }}
+
+Filters:
+{{ name|lower }}
+{{ name|upper }}
+{{ name|truncatewords:30 }}
+{{ name|length }}
+{{ name|safe }} # for safe html content
+
+Tags:
+{% tag %} 
+    ... tag contents ... 
+{% endtag %}
+
+Tags (e.g. for, if/elif/else, )
+- for
+<ul>
+    {% for product in products %}
+        <li>{{ product.name }}</li>
+    {% endfor %}
+</ul>
+
+- if/elif/else
+{% if products %}
+    Number of products: {{ products|length }}
+{% elif products_quantity_zero %}
+    {{ products_quantity_zero|length }} products will be available soon!
+{% else %}
+    No products.
+{% endif %}
+
+Template inheritence:
+---------------------
+base.html
+----------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>{% block title %}Electronics Commerce{% endblock %}</title>
+</head>
+
+<body>
+    <div id="sidebar" class="col-sm-3 col-md-3 col-lg-3">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/product/">Product</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+
+    <div id="content" class="col-sm-9 col-md-9 col-lg-9">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
+
+index.html
+----------
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+    {% for product in products %}
+        <h2>{{ product.name }}</h2>
+        <p>NRs. {{ product.price }}</p>
+        <p><img src='{{ product.image_url }}'</p>
+    {% endfor %}
+{% endblock %}

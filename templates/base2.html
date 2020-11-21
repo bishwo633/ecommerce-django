@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Electronic Commerce</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Electronic Commerce">
+    <meta name="author" content="Bishwo Adhikari">
+    <link rel="icon" type="image/x-icon" href="favicon.ico"/>        
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}"> -->
+    <!-- <link rel="stylesheet" href="{% static 'css/styles.css' %}"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+    {% block head_js %}{% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+            <a href="/"class="navbar-brand"><i class="fa fa-rocket fa-lg" aria-hidden="true" style="margin-right: 20px;"></i>Rocket Gizmos</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">    
+                <ul class="nav nav-pills navbar-nav pull-right">
+                    <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="{% url 'categories' %}"><i class="fa fa-search"></i> Search</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a></li>
+                        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a></li>
+                    {% else %}
+                        <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
+                        <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Log In</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'cart' %}"><i class="fa fa-shopping-cart"></i> Cart: {{ cart_quantity }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<header>
+    {% block header%}
+    {% endblock%}
+</header>
+ 
+<main>    
+    <div class="container">
+        <div class="masthead">       
+    {% if messages %}
+        <div class="alert alert-success">
+            <div class="messages">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+        <div class="row">
+            <div class="col-sm-12 col-md-2">
+                <div class="nav nav-sidebar">
+                    {% block sidebar %}
+                    {% endblock sidebar %}
+                </div>
+            </div>        
+            <div class="col-sm-12 col-md-8">
+                <div class="content">
+                    {% block content %}
+                    {% endblock content%}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <hr>
+    <div class="container">
+        <div class="row">            
+            <div class="col-sm-4">
+                <p>Copyright &copy; Ecommerce @ {% now "Y" %}</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+a{
+    decoration: none;
+}
+i{
+    margin-right: 10px;
+}
+h4{
+    color: white;
+}
+.jumbotron{
+    padding-top: 20%;
+    color: white;
+    font-weight: 800;
+    height: 800px;
+    background-image:  url("/static/images/frontpage.png");
+    background-size: cover;
+}
+.whiteBkg{
+    background-image:  url("/static/images/dark-mosaic.png");
+}
+
+
+.categoryHeader{
+    margin-top: 45px;
+    background-image:  url("/static/images/categorys.jpg");
+}
+.cartHeader{
+    margin-top: 45px;
+    background-image:  url("/static/images/cart.jpg");
+}
+#credit-card-errors{
+    color: darkred;
+    background-color: lightpink;
+    border: 1px solid darkred;
+    text-align: center;
+    border-radius: 4px;
+    padding: 10px;
+}
+main{
+    margin-top: 55px;
+    margin-bottom: 50px;
+}
